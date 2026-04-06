@@ -7,3 +7,8 @@
 * Removed password storage from logging
 * Added /health endpoint for Kubernetes Health probe 
 * Changed hard coded secret key to ENV VAR
+
+### VM Setup
+* Added VM configuration to run Python app as systemd service on Fedora 43 server
+* App config directly gets pulled from repository
+* Added README for running Flask app on Vagrant
