@@ -25,20 +25,25 @@ Vagrant.configure("2") do |config|
     mkdir -p /opt/sre-challenge
     cd /opt/sre-challenge
 
-    # Clone only the 'app/' folder from the 'dev' branch
-    # This uses sparse checkout to avoid cloning the full repo
+    # Sparse clone of only 'app/' folder
     git init
     git remote add origin https://github.com/DdeGooijer/sre-challenge.git
     git config core.sparseCheckout true
     echo "app/*" >> .git/info/sparse-checkout
-    git fetch --depth=1 origin dev
-    git checkout dev
+
+    # Default branch is main
+    DEFAULT_BRANCH=main
+    git fetch --depth=1 origin $DEFAULT_BRANCH
+    git checkout $DEFAULT_BRANCH
+
+    # Fix ownership
     sudo chown -R vagrant:vagrant /opt/sre-challenge
 
     cd /opt/sre-challenge/app
 
     # Install dependencies if requirements.txt exists
     if [ -f requirements.txt ]; then
+      pip3 install --upgrade pip
       pip3 install -r requirements.txt
     fi
 
