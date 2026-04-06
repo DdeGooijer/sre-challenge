@@ -12,3 +12,8 @@
 * Added VM configuration to run Python app as systemd service on Fedora 43 server
 * App config directly gets pulled from repository
 * Added README for running Flask app on Vagrant
+
+### Kubernetes setup
+* Added Dockerfile with Alpine Linux image for Flask Webapp
+* Added Kubernetes manifests for secret key and Flask Webapp service and deployment
+* Added README on how to deploy Flask Web App to local Kubernetes cluster running Podman and Kind
